@@ -1,5 +1,6 @@
 package org.example.SchoolAPI.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,10 +13,12 @@ public class RelationEntity {
 
     @ManyToOne
     @JoinColumn(name = "teacher_id")
+
     private TeacherEntity teacher;
 
     @ManyToOne
     @JoinColumn(name = "student_id")
+    @JsonIgnore
     private StudentEntity student;
 
     public RelationEntity() {}

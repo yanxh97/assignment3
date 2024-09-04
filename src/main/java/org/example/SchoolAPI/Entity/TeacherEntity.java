@@ -1,5 +1,6 @@
 package org.example.SchoolAPI.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -13,6 +14,7 @@ public class TeacherEntity {
     private Long id;
     private String name;
     @OneToMany(mappedBy = "teacher")
+    @JsonIgnore
     private List<RelationEntity> relationList;
 
     public TeacherEntity() {}
