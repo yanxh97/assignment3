@@ -55,8 +55,12 @@ public class StudentRepositoryImpl implements StudentRepository{
         Root<StudentEntity> root = cq.from(StudentEntity.class);
         cq.select(root);
         cq.where(cb.gt(root.get("id"), 10));
+        em.getTransaction().begin();
         TypedQuery<StudentEntity> query = em.createQuery(cq);
-        return query.getResultList();
+        List<StudentEntity> res = query.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return res;
     }
 
     @Override
